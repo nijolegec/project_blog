@@ -1,0 +1,16 @@
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>blog |Create post</title>
+    </head>
+    <body>
+    <h1>Crate post</h1>
+        <form th:action="@{/post/create}"method="post">
+                <span>Title: <input type="text" th:field="*{title}"></span>
+                <span>Posted_text: <input type="text" th:field="*{posted_text}"></span>
+                <input type="submit" title="Create">
+            </form>
+            <div>
+        <a th:hreef="@{/post}">Back to list</a>
+        </div>
+    </body>
+</html>

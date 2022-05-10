@@ -1,0 +1,33 @@
+<html xmlns:th="https://www.thymeleaf.org">
+
+    <head>
+        <title >blog | Post</title>
+    </head>
+    <body>
+    <ul th:each="">
+
+    </ul>
+    <div th:object="${post}">
+        <div>
+            <span>Title: </span>
+            <span th:text="*{title}"></span>
+        </div>
+        <div>
+            <span>Posted_text</span>
+            <span th:text="*{posted_text}"></span>
+        </div>
+        <div>
+            <span>Author_name</span>
+            <span>th:text="*{author_name}"</span>
+        </div>
+
+    </div>
+        <div>
+            <a th:href="@{/post}">Back to list</a>
+            <a th:href="@{/post/post/(id=${post.getId())}}">Update post</a>
+        </div>
+    </body>
+
+
+</html>
+
