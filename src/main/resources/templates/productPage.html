@@ -4,20 +4,21 @@
         <title >blog | Post</title>
     </head>
     <body>
-    <ul th:each="">
+    <a th:href="@{?lang=lt}">LT</a>
+    <a th:href="@{?lang=en}">EN</a>
 
-    </ul>
     <div th:object="${post}">
         <div>
-            <span>Title: </span>
+            <span th:text="#{titleKey}"></span>
             <span th:text="*{title}"></span>
         </div>
         <div>
-            <span>Posted_text</span>
+            <span th:text="#{posted_textKey}" ></span>
+
             <span th:text="*{posted_text}"></span>
         </div>
         <div>
-            <span>Author_name</span>
+            <span th:text="#{author_nameKey}"></span>
             <span>th:text="*{author_name}"</span>
         </div>
 
