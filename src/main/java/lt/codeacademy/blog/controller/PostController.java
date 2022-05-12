@@ -3,6 +3,7 @@ package lt.codeacademy.blog.controller;
 import lt.codeacademy.blog.exeption.PostNotFoundException;
 import lt.codeacademy.blog.repository.PostRepository;
 import lt.codeacademy.blog.repository.entity.Post;
+import lt.codeacademy.blog.service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -17,12 +18,10 @@ import java.util.Optional;
 @RequestMapping(path = "/post")
 public class PostController {
 
-    private PostRepository postRepository;
+    private final PostService postService;
 
-
-
-    public PostController(PostRepository postRepository) {
-        this.postRepository = postRepository;
+    public PostController(PostService postService) {
+        this.postService = postService;
     }
 
     @GetMapping
@@ -30,11 +29,9 @@ public class PostController {
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             Model model
     ) {
-        Pageable pageable = Pageable
-                .ofSize(25)
-                .withPage(pageNumber);
 
-        Page<Post> postPage = postRepository.findAll(pageable);
+
+       Page<Post>postPage= postService.findAllPageable(25, pageNumber);
 
         List<Post> post = postPage.getContent();
 
@@ -55,14 +52,7 @@ public class PostController {
             Model model
 
     ) {
-        Optional<Post> foundPost = postRepository.findById(id);
-
-        if (foundPost.isEmpty()) {
-            throw new PostNotFoundException();
-        }
-        Post post = foundPost.get();
-
-//        model.addAttribute("showPrice", showPrice);
+        Post post = postService.findById(id);
 
         model.addAttribute("post", post);
 
@@ -78,7 +68,7 @@ public class PostController {
 
     @PostMapping("/create")
     public String createPost(Post post, Model model) {
-        Post createdPost = postRepository.save(post);
+        Post createdPost = postService.create(post);
         model.addAttribute("post", createdPost);
         return "redirect:/post/"+ createdPost.getId();
 
