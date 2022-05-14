@@ -5,9 +5,11 @@ import lt.codeacademy.blog.repository.PostRepository;
 import lt.codeacademy.blog.repository.entity.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class PostService {
 
     private final PostRepository postRepository;
