@@ -5,8 +5,10 @@
     <body>
     <h1>Crate post</h1>
         <form th:action="@{/post/create}"method="post">
-                <span>Title: <input type="text" th:field="*{title}"></span>
-                <span>Posted_text: <input type="text" th:field="*{posted_text}"></span>
+                <div>Title: <input type="text" th:field="*{title}"></div>
+                <div>Posted_text: <textarea style="height:300px, width:300px" th:field="*{posted_text}"/></div>
+                <div>Author_name: <input type="text" th:field="*{author_name}"></div>
+                <div>Description: <input type="datetime-local" th:field="*{postTime}"></div>
                 <input type="submit" title="Create">
             </form>
             <div>

@@ -49,7 +49,7 @@ public class PostController {
     @GetMapping(path = "/{id}")
     public String getPostPage(
             @PathVariable(name = "id") Long id,
-//            @RequestParam(name = "showPrice", required = false) boolean showPrice,
+
             Model model
 
     ) {
