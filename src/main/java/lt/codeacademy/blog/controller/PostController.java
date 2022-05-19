@@ -73,5 +73,7 @@ public class PostController {
         model.addAttribute("post", createdPost);
         return "redirect:/post/"+ createdPost.getId();
 
+
+
     }
 }

@@ -1,0 +1,14 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <title th:text="*{title}"></title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="topnav" th:fragment="menu">
+    <a class="active" th:href="@{/products}">List</a>
+    <a th:href="@{/post/post}">Create ppst</a>
+    <a th:href="@{?lang=LT}">LT</a>
+    <a th:href="@{?lang=EN}">EN</a>
+  </div>
+</body>
+</html>

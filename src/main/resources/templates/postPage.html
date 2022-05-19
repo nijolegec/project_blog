@@ -3,9 +3,13 @@
     <head>
         <title >blog | Post</title>
     </head>
+    <head th:replace="fragments/fragments :: head('blog | ' + ${post.getTitle()})"></head>
     <body>
+    <div>
     <a th:href="@{?lang=lt}">LT</a>
     <a th:href="@{?lang=en}">EN</a>
+    </div>
+    <div th:replace="fragments/fragments :: menu"></div>
 
     <div th:object="${post}">
         <div>

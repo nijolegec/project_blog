@@ -3,7 +3,9 @@
         <title>blog | Products</title>
         <link rel="stylesheet" th:href="@{/styles.css}">
     </head>
-    <body class="green">
+    <head th:replace="fragments/fragments :: head('blog | Post')"></head>
+    <body>
+     <div th:replace="fragments/fragments :: menu"></div>
 
         <ul th:each="post:${post}">
             <li>
