@@ -11,12 +11,13 @@
         <form th:action="@{/post/create}"method="post">
                 <div>Title: <input type="text" th:field="*{title}"></div>
                 <div>Posted_text: <textarea style="height:300px, width:300px" th:field="*{posted_text}"/></div>
-                <div>Author_name: <input type="text" th:field="*{author_name}"></div>
+                <div>Author_name: <input type="text" th:field="*{authorName}"></div>
                 <div>Description: <input type="datetime-local" th:field="*{postTime}"></div>
                 <input type="submit" title="Create">
             </form>
             <div>
         <a th:hreef="@{/post}">Back to list</a>
         </div>
+    </div>
     </body>
 </html>

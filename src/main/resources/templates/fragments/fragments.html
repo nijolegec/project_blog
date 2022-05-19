@@ -1,12 +1,17 @@
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="head(title)">
     <title th:text="*{title}"></title>
     <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 <div class="topnav" th:fragment="menu">
-    <a class="active" th:href="@{/products}">List</a>
-    <a th:href="@{/post/post}">Create ppst</a>
+    <a th:href="@{/post}">
+        <img class="logo" th:src="@{images/Maisto_logotipas.svg}"/>
+    </a>
+
+    <a class="active" th:href="@{/post}">List</a>
+    <a th:href="@{/post/post}">Create post</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/products/product}">Create product</a>
     <a th:href="@{?lang=LT}">LT</a>
     <a th:href="@{?lang=EN}">EN</a>
   </div>
