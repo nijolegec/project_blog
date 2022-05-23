@@ -10,12 +10,12 @@
 
         <ul th:each="post:${post}">
             <li>
-                <a th:text="${post.getTitle()}" th:href="@{/post/{id}(id=${post.getId()})}" ></a>
+                <a th:text="${post.getTitle()}" th:href="@{/public/post/{id}(id=${post.getId()})}" ></a>
            </li>
         </ul>
     <div>
         <a th:href="@{/post(page=${currentPage -1})}"></a>
-        <span th:rach="page: ${#numbers.sequence(0, totalpages -1)}">
+        <span th:each="page: ${#numbers.sequence(0, totalPages -1)}">
             <a th:href=" @{/post(page=${page})}"></a>
         </span>
         <a th:href="@{/post(pade=${currentPage +1})}"></a>

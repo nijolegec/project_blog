@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(path = "/post")
+@RequestMapping(path = "/private/post")
 @RequiredArgsConstructor
 public class PostPrivateController {
 
@@ -20,17 +20,25 @@ public class PostPrivateController {
 
     @GetMapping("/post")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createProduct(@Valid Post post, BindingResult errors, Model model) {
-        if (errors.hasErrors()) {
-            return "productForm";
-        }
-        Post createdProduct = postService.create(post);
-        model.addAttribute("product", createdProduct);
-        return "redirect:/products/" + createdProduct.getId();
+    public String getPostForm(Model model) {
+        return "postForm";
     }
 
-    @ModelAttribute("product")
-    public Post populateEmptyProduct() {
+    @PostMapping("/create")
+    @PreAuthorize("hasRole('ADMIN')")
+
+    public String createPost(@Valid Post post, BindingResult errors, Model model) {
+        if (errors.hasErrors()) {
+            return "postForm";
+        }
+
+        Post createdPost = postService.create(post);
+        model.addAttribute("post", createdPost);
+        return "redirect:/post/" + createdPost.getId();
+    }
+
+    @ModelAttribute("post")
+    public Post populateEmptyPost() {
 
         return new Post();
     }

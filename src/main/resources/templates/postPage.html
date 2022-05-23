@@ -21,15 +21,16 @@
 
             <span th:text="*{posted_text}"></span>
         </div>
+
         <div>
             <span th:text="#{author_nameKey}"></span>
-            <span>th:text="*{author_name}"</span>
+            <span th:text="*{author_name}"></span>
         </div>
 
     </div>
         <div>
-            <a th:href="@{/post}">Back to list</a>
-            <a th:href="@{/post/post/(id=${post.getId())}}">Update post</a>
+            <a th:href="@{public/post}">Back to list</a>
+            <a th:href="@{private/posted/post/(id=${post.getId())}}">Update post</a>
         </div>
     </body>
 

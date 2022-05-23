@@ -26,8 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
 
 
-
-
     @Override
     public void configure(WebSecurity web) {
 
@@ -35,13 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login/**", "/h2/**","/public**").permitAll()
-                .antMatchers("/login/**", "/h2/**", "/public/**", "/logout/**").permitAll()
+                .antMatchers("/login/**", "/h2/**", "/public/**", "/logout/**","/static/**").permitAll()
                 .antMatchers("/private/**").authenticated()
                 .anyRequest().authenticated()
                 .and()
@@ -49,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/post")
+                .defaultSuccessUrl("/public/post", true)
                 .failureUrl("/login?error=true")
                 .and()
                 .logout()
@@ -61,10 +57,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .sameOrigin();
 
-    }@Override
+    }
+
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService);
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
