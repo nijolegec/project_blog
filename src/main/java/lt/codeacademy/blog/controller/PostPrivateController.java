@@ -18,7 +18,7 @@ public class PostPrivateController {
 
     private final PostService postService;
 
-    @GetMapping("/post")
+    @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public String getPostForm(Model model) {
         return "postForm";
@@ -33,8 +33,9 @@ public class PostPrivateController {
         }
 
         Post createdPost = postService.create(post);
+
         model.addAttribute("post", createdPost);
-        return "redirect:/post/" + createdPost.getId();
+        return "redirect:/public/post/" + createdPost.getId();
     }
 
     @ModelAttribute("post")
@@ -46,20 +47,13 @@ public class PostPrivateController {
 }
 
 
-//    @GetMapping(path = "/{id}")
-//    public String getPostPage(
-//            @PathVariable(name = "id") Long id,
-//
-//            Model model
-//
-//    ) {
-//        Post post = postService.findById(id);
-//
-//        model.addAttribute("post", post);
-//
-//
-//        return "postPage";
+//    @GetMapping("/delete{id}")
+//    public String deletePost(
+//            @PathVariable(name="id") Long id {
+//                postService.delete(id);
 //    }
+//    )
+//}
 //
 //    @GetMapping("/post")
 //    public String getPostForm(Model model) {

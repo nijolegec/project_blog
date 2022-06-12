@@ -1,25 +1,28 @@
 package lt.codeacademy.blog.service;
 
+import lombok.RequiredArgsConstructor;
 import lt.codeacademy.blog.exeption.PostNotFoundException;
+import lt.codeacademy.blog.repository.CommentRepository;
 import lt.codeacademy.blog.repository.PostRepository;
+import lt.codeacademy.blog.repository.UserRepository;
 import lt.codeacademy.blog.repository.entity.Post;
+import lt.codeacademy.blog.repository.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 @Service
+@RequiredArgsConstructor
 public class PostService {
 
     private final PostRepository postRepository;
-
-    public PostService(PostRepository postRepository) {
-
-        this.postRepository = postRepository;
-    }
+    private final CommentRepository commentRepository;
+    private final UserRepository userRepository;
 
     public Post create(Post post) {
+//        User author= userRepository.getById(userId);
+//        post.setUser(author);
+
         return postRepository.save(post);
     }
 

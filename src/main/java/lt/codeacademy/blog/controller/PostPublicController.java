@@ -21,7 +21,7 @@ public class PostPublicController {
     private final PostService postService;
 
     @GetMapping
-    public String getProductList(
+    public String getPostList(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             Model model
     ) {
@@ -36,6 +36,7 @@ public class PostPublicController {
     @GetMapping(path = "/{id}")
     public String getPostPage(
             @PathVariable(name = "id") Long id,
+//            @RequestParam(name = )
 
             Model model
     ) {
