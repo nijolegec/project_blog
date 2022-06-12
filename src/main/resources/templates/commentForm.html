@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org" >
+<head th:replace="fragments/fragments :: head('blog | Create comment' )"></head>
+<body class="background">
+
+<div th:replace="fragments/fragments :: menu"></div>
+<h3 th:text="#{createCommentKey}"></h3>
+<form th:action="@{/private/posts/{id}/comments/create(id=${postId})}" th:object="${comment}" method="post">
+    <div >
+
+        <textarea  rows="12" cols="50" th:field="*{text}"></textarea>
+    </div>
+
+
+    <div>
+        <input type="Submit"></input>
+    </div>
+</form>
+
+</div>
+</body>
+
+
+</html>

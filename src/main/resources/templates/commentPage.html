@@ -1,0 +1,21 @@
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head th:replace="fragments/fragments :: head('blog |' Create Comment' )"></head>
+    <body class="backgroud">
+
+    <div th:replace="fragments/fragments :: menu"></div>
+    <h3 th:text="#{createPostKey}"></h3>
+    <form th:action="@{/private/posts/{id}/comments/create(id=${postId})}" th:object="${comment}" method=" post">
+        <div th:text="#{textKey}">
+            <textarea type="text" rows="12" cols="50" th:field="*{text}"></textarea>
+        </div>
+        <div>
+           <imput type="Submit" th:value="#{submitKey}"></imput>
+        </div>
+    </form>
+
+        </div>
+    </body>
+
+
+</html>
+

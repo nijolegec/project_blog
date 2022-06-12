@@ -1,23 +1,34 @@
 <html xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>blog |Create post</title>
-        <link rel="stylesheet" th:href="@{/styles.css}">
-    </head>
-    <head th:replace="fragments/fragments :: head('post | Create post')"></head>
-    <body>
-    <div th:replace="fragments/fragments :: menu"></div>
-    <div class="center">
-    <h1>Crate post</h1>
-        <form th:action="@{/post/create}"method="post">
-                <div>Title: <input type="text" th:field="*{title}"></div>
-                <div>Posted_text: <textarea style="height:300px, width:300px" th:field="*{posted_text}"/></div>
-                <div>Author_name: <input type="text" th:field="*{authorName}"></div>
-                <div>Description: <input type="datetime-local" th:field="*{postTime}"></div>
-                <input type="submit" title="Create">
-            </form>
-            <div>
-        <a th:hreef="@{/post}">Back to list</a>
+<head th:replace="fragments/fragments :: head('blog | Post')"></head>
+<body>
+<div th:replace="fragments/fragments :: menu"></div>
+<div class="center">
+    <h1>Create post</h1>
+    <form th:action="@{/private/post/create}" th:object="${post}" method="post">
+
+        <div>
+
+            <span>Title: <input type="text" th:field="*{title}"></span>
         </div>
+        <div>
+            <span>Posted_text: <input type="text" th:field="*{postedText}" th:errorclass="error"></span>
+
+        </div>
+        <div>
+            <span>Author_name: <input type="text" th:field="*{authorName}"></span>
+        </div>
+
+
+        <div>
+            <input type="submit" title="Create">
+        </div>
+    </form>
+    <div>
+        <a th:href="@{/public/post}">Back to list</a>
     </div>
-    </body>
+    <div>
+<!--        <a th:href="@{/public/post{id}}">Comment</a>-->
+    </div>
+</div>
+</body>
 </html>

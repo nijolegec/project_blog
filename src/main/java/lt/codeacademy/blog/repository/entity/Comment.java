@@ -5,28 +5,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Calendar;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class Post {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
     @Column(name = "title")
     private  String title;
 
-
-    @Column(name = "posted_text")
-    private  String postedText;
+    @Column(name = "text")
+    private  String text;
 
     @Column(name = "author_name")
-    private   String authorName;
+    private   String author_name;
 
+    public void setPost(Post post) {
 
-
-
+    }
 }

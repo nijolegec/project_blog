@@ -1,0 +1,27 @@
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+    <head th:replace="fragments/fragments :: head('blog | Comment')"></head>
+<body>
+<div th:replace="fragments/fragments :: menu"></div>
+
+<ul th:each="comment:${comment}">
+    <li>
+        <a th:text="${post.getTitle()}" th:href="@{/public/comment/{id}(id=${comment.getId()})}" ></a>
+    </li>
+</ul>
+<div>
+    <a th:href="@{/comment(page=${currentPage -1})}"></a>
+    <span th:each="page: ${#numbers.sequence(0, totalPages -1)}">
+            <a th:href=" @{/post(page=${page})}"></a>
+        </span>
+    <a th:href="@{/post(pade=${currentPage +1})}"></a>
+</div>
+<div>
+    <a th:Hreef="@{/post/post}">Create post</a>
+</div>
+</body>
+
+
+</html>

@@ -1,39 +1,29 @@
 <html xmlns:th="https://www.thymeleaf.org">
-
-    <head>
-        <title >blog | Post</title>
-    </head>
-    <head th:replace="fragments/fragments :: head('blog | ' + ${post.getTitle()})"></head>
-    <body>
+<head th:replace="fragments/fragments :: head('blog | ' + ${post.getTitle()})"></head>
+<body>
+<div th:replace="fragments/fragments :: menu"></div>
+<div>
+    <h1>Welcome to my blog</h1>
+</div>
+<div th:object="${post}">
     <div>
-    <a th:href="@{?lang=lt}">LT</a>
-    <a th:href="@{?lang=en}">EN</a>
+        <span th:text="#{titleKey}"></span>
+        <span th:text="*{title}"></span>
     </div>
-    <div th:replace="fragments/fragments :: menu"></div>
-
-    <div th:object="${post}">
-        <div>
-            <span th:text="#{titleKey}"></span>
-            <span th:text="*{title}"></span>
-        </div>
-        <div>
-            <span th:text="#{posted_textKey}" ></span>
-
-            <span th:text="*{posted_text}"></span>
-        </div>
-
-        <div>
-            <span th:text="#{author_nameKey}"></span>
-            <span th:text="*{author_name}"></span>
-        </div>
-
+    <div>
+        <span th:text="#{postedTextKey}"></span>
+        <span th:text="*{postedText}"></span>
     </div>
-        <div>
-            <a th:href="@{public/post}">Back to list</a>
-            <a th:href="@{private/posted/post/(id=${post.getId())}}">Update post</a>
-        </div>
-    </body>
+    <div>
+        <span th:text="#{authorNameKey}"></span>
+        <span th:text="*{authorName}"></span>
+    </div>
+</div>
+<div>
+    <a th:href="@{/public/post}">Back to list</a>
+    <a th:href="@{/private/post/{id}(id=${post.getId()})}">Update post</a>
+    <a th:href="@{/public/posts/{id}/comments}">Comment</a>
+</div>
 
-
+</body>
 </html>
-

@@ -5,11 +5,16 @@
 </head>
 <body>
 <div class="topnav" th:fragment="menu">
+    <a th:href="@{/post}">
+        <img class="logo" th:src="@{/images/MaistoNamai.png}" width="50" height="50"/>
+    </a>
 
 
-    <a class="active" th:href="@{/post}">List</a>
+    <a class="active" th:href="@{/public/post}">Sąrašas</a>
+    <a class="login" th:href="@{/public/post}">Prisijungti</a>
 
-    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/post}">Create post</a>
+
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/post}">Sukurti postą</a>
     <a th:href="@{?lang=LT}">LT</a>
     <a th:href="@{?lang=EN}">EN</a>
   </div>
